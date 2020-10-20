@@ -29,21 +29,18 @@ public class BANK5 {
 				if (num == 1) {
 					if (cnt < 3) {
 						for (int i=0;i<id.length;i++){
-							for(int j=0;j<id.length;j++)
-								if(id[i]==id[j]) {System.out.println("이미 존재하는 아이디입니다.");}
-								else {
-							if(check[i]==0) {							
-							System.out.print("*ID :");
-							id[i] = scanner.next();
-							System.out.print("*PASS :");
-							pass[i] = scanner.next();
-							System.out.print("*AGE :");
-							age[i] = scanner.nextInt();
-							System.out.print("*BALANCE :");
-							bal[i] = scanner.nextInt();
-							System.out.println();
-							check[i]=1;break;}
-							}
+								if(check[i]==0) {							
+								System.out.print("*ID :");
+								id[i] = scanner.next();
+								System.out.print("*PASS :");
+								pass[i] = scanner.next();
+								System.out.print("*AGE :");
+								age[i] = scanner.nextInt();
+								System.out.print("*BALANCE :");
+								bal[i] = scanner.nextInt();
+								System.out.println();
+								check[i]=1;break;}
+								
 							}
 						cnt++;
 						}
@@ -60,7 +57,7 @@ public class BANK5 {
 
 					
 					for (int i = 0; i < 3; i++) {
-						if(id[i]!=null&&id[i].equals(temp_id) && pass[i]!=null&&pass[i].equals(temp_pass))
+						if(id[i]!=null&&temp_id.equals(id[i]) && pass[i]!=null&&temp_pass.equals(pass[i]))
 						{match=true;}
 						
 						if (match)	{

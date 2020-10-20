@@ -20,7 +20,8 @@ public class Method014 {
 				
 		
 		//출력
-		result = "001. YEAR : "+(year)+"\n002. MONTH : "+month+"\n003. DAY : "+c;
+		result = "001. YEAR : "+(year)+"\n002. MONTH : "+month+"\n003. DAY : "+c
+				+"\n서기 1년 1월 1일 ~"+a+"년 "+b+"월 "+c+"일 : "+(year+month+c);
 		
 		return result;
 	}

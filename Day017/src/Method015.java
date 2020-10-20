@@ -23,7 +23,7 @@ public class Method015 {
 	}
 	
 
-	public static String myCalendar(int a, int b, int c)	{
+	public static void myCalendar(int a, int b, int c)	{
 		String result=null,date=null;
 		int year=0,month=0,hap=0;
 		int months[] = {31,28,31,30,31,30,31,31,30,31,30,31};
@@ -43,10 +43,9 @@ public class Method015 {
 		
 		//요일
 		date=week(hap);
-		result="* 서기 1년 ~ 오늘 총 날수 : "+hap+"\n* "+a+"년 "+b+"월 "+c+"일 "+date;
 		show(hap,b,months[b-1],c);
-		//달력 
-		return result;
+		System.out.println("* 서기 1년 ~ 오늘 총 날수 : "+hap+"\n* "+a+"년 "+b+"월 "+c+"일 "+date);
+
 			
 		
 	}
@@ -68,7 +67,7 @@ public class Method015 {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(myCalendar(2019,2,27));
+		myCalendar(2019,2,27);
 
 	}
 
