@@ -6,6 +6,10 @@ public class Method015 {
 		if (n%4==0&&n%100!=0||n%400==0) return true;
 		else return false;
 	}
+	//[분석]
+	//리턴값 : boolean (true/false)
+	//파라미터 : int n
+	//기능 : 윤년인지 평년인지 판단해서 윤년이면 true, 평년이면 false 를 return
 	
 	public static String week(int key) {
 		String result=null;
@@ -21,6 +25,11 @@ public class Method015 {
 		}
 		return result;
 	}
+	
+	//[분석]
+	//리턴값 : String
+	//파라미터 : int key
+	//기능 : 입력한 int key를 7로 나눠서 나머지에 따라 요일을 return 하는 기능
 	
 
 	public static void myCalendar(int a, int b, int c)	{
@@ -46,7 +55,10 @@ public class Method015 {
 		show(hap,b,months[b-1],c);
 		System.out.println("* 서기 1년 ~ 오늘 총 날수 : "+hap+"\n* "+a+"년 "+b+"월 "+c+"일 "+date);
 
-			
+		//[분석]
+		//리턴값 : 없음(void)
+		//파라미터 : int a(연도), int b(월), int c(일)
+		//기능 : 입력한 int a,b,c(연,월,일)을 처리하여 서기 1년 1월 1일부터 오늘까지의 날수를 출력 및 달력을 출력
 		
 	}
 
@@ -65,6 +77,11 @@ public class Method015 {
 		}
 		System.out.println();
 	}
+	//[분석]
+	//리턴값 : 없음(void)
+	//파라미터 : int hap(입력 연월일까지의 서기 1년 1월 1일부터의 총 일수), int month(입력 월), 
+	//        int end(해당 월의 마지막 일 = 숫자), int date(입력 일자)
+	//기능 : 입력한 변수를 이용 입력월의 달력을 출력하는 기능
 	
 	public static void main(String[] args) {
 		myCalendar(2019,2,27);

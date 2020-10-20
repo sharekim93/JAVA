@@ -26,40 +26,37 @@ public class BANK5 {
 			num = scanner.nextInt();
 			
 			if (num == 1 || num == 2 || num == 3 || num == 4 || num == 5 || num == 9) {
-				if (num == 1) {
-					if (cnt < 3) {
-						for (int i=0;i<id.length;i++){
-								if(check[i]==0) {							
-								System.out.print("*ID :");
-								id[i] = scanner.next();
-								System.out.print("*PASS :");
-								pass[i] = scanner.next();
-								System.out.print("*AGE :");
-								age[i] = scanner.nextInt();
-								System.out.print("*BALANCE :");
-								bal[i] = scanner.nextInt();
-								System.out.println();
-								check[i]=1;break;}
-								
-							}
-						cnt++;
-						}
-					else
-						System.out.println("더 이상 신규가입이 불가합니다.");
-					}
-				else if(num == 9) {break;}
+				if(num == 9) {break;}
 				else {
 					String temp_id = null, temp_pass=null;
 					System.out.println("*ID :");
 					temp_id = scanner.next();
 					System.out.println("*PASS :");
 					temp_pass = scanner.next();
-
+					
 					
 					for (int i = 0; i < 3; i++) {
+						if (num == 1) {
+							if (cnt < 3) {
+								for (int j=0;j<id.length;j++){
+										if(check[j]==0) {							
+										id[j] = temp_id;
+										pass[j] = temp_pass;
+										System.out.print("*AGE :");
+										age[j] = scanner.nextInt();
+										System.out.print("*BALANCE :");
+										bal[j] = scanner.nextInt();
+										System.out.println();
+										check[j]=1;break;}	
+									}
+								cnt++;break;
+								}
+							else
+								System.out.println("더 이상 신규가입이 불가합니다.");break;
+							}
 						if(id[i]!=null&&temp_id.equals(id[i]) && pass[i]!=null&&temp_pass.equals(pass[i]))
 						{match=true;}
-						
+						else System.out.println("조회에 실패했습니다.");
 						if (match)	{
 							if(num==2) {
 								System.out.println("======조회결과======\n\n아이디 : "
@@ -89,15 +86,10 @@ public class BANK5 {
 								if(delete.equalsIgnoreCase("Y")){id[i]=null;pass[i]=null;age[i]=0;bal[i] = 0;check[i]=0;cnt--;}match=false;break;
 							}
 						}
-						else System.out.println("조회에 실패했습니다.");
-						
 					}
-
 				}
-			
 			}
 			else System.out.println("잘못 입력하셨습니다.");
 		}
 	}
-
 }
