@@ -65,14 +65,18 @@ public class Method015 {
 	public static void show(int hap, int month, int end, int date) {
 		System.out.println("===================== "+month+"월 =====================");
 		System.out.println("일\t월\t화\t수\t목\t금\t토");
-		for (int i=0;i<7;i++) {
-			if(i<(hap-date+1)%7) {System.out.print("*\t");}
-			else System.out.print(i-(hap-date)%7+"\t");
-		}
-		System.out.println();
+		// 첫줄 표현 
+		if((hap+1)%7!=0) {
+			for (int j=0;j<7;j++) {
+				if(j<=(hap+1)%7) {System.out.print("*\t");}
+				else System.out.print(j-(hap+1)%7+"\t");
+				}
+			System.out.println();
+		}		
+		// *표 이후 출력
 		int count=0;
-		for (int i=7-(hap-date)%7;i<=end;i++) {
-			System.out.print(i+"\t");count++;
+		for (int j=7-(hap+1)%7;j<=end;j++) {
+			System.out.print(j+"\t");count++;
 			if (count%7==0) {System.out.println();}
 		}
 		System.out.println();
