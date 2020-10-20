@@ -47,7 +47,7 @@ public class Method016 {
 		//입력된 day의 전일까지 삭제
 		days=days-day+1;
 		
-		// 올해 1월 1일부터 오늘 날짜까지 days에 더함
+		// 올해 1월 1일부터 이번 달 전까지 일수를 days에 더함
 		for (int i=0; i<today_month-1;i++){days+=months[i];}
 		if(leap(today_year)){
 			if(today_month>2){days+=1;}
