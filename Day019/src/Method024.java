@@ -21,3 +21,10 @@ public class Method024 {
 		//parameter : char a[]
 	}
 }
+// 1.call by value : 함수명(value1, value2)와 같이 호출
+// method 내에서 value++;와 같이 파라미터로 받은 값을 변경하는 경우 원본 값을 변경하지 않음
+// parameter로 받은 값을 메서드 내에서 복사한다고 생각할 수 있음
+
+// 2.call by reference : 함수명 (int array[])와 같이 배열을 호출.(배열은 주소값)
+// method 내에서 값을 변경하는 경우 원본 값 또한 변경이 됨.
+// parameter로 주소를 받아 왔기 때문에 원본 값이 변경된다 생각할 수 있음
