@@ -59,40 +59,39 @@ public class BANK5 {
 					
 					for (int i = 0; i < 3; i++) {
 						if(id[i]!=null&&temp_id.equals(id[i]) && pass[i]!=null&&temp_pass.equals(pass[i]))
-						{match=true;}
+						{match=true;index=i;}
+					}
 						if (match)	{
 							if(num==2) {
 								System.out.println("======조회결과======\n\n아이디 : "
-										+id[i]+"\n나이 : "
-										+age[i]+"\n잔액 : "
-										+bal[i]+"\n암호 : "
-										+pass[i]+"\n조회가 성공했습니다.\n\n아무키나 누르세요\n");
-								next= scanner.nextLine();match=false;break;
+										+id[index]+"\n나이 : "
+										+age[index]+"\n잔액 : "
+										+bal[index]+"\n암호 : "
+										+pass[index]+"\n조회가 성공했습니다.\n\n아무키나 누르세요\n");
+								next= scanner.nextLine();
 							}
 							if(num==3) {	
 								System.out.print("입금할 금액을 입력해주세요");
 								money = scanner.nextInt();
-								if (money>=0) {bal[i] = bal[i]+money;match=false;break;}
-								else System.out.println("잘못 입력하셨습니다.");match=false;break;
+								if (money>=0) {bal[index] = bal[index]+money;}
+								else System.out.println("잘못 입력하셨습니다.");
 							}
 							if(num==4) {
 								System.out.print("출금액 :");
 								money = scanner.nextInt();
-								if (bal[i]-money>=0) {bal[i]=bal[i]-money;}
-								else if (bal[i]-money<0) {System.out.println("금액이 모자랍니다.");match=false;break;}
-								else if (money<0) {System.out.println("잘못 입력하셨습니다.");match=false;break;}
+								if (bal[index]-money>=0) {bal[index]=bal[index]-money;}
+								else if (bal[index]-money<0) {System.out.println("금액이 모자랍니다.");}
+								else if (money<0) {System.out.println("잘못 입력하셨습니다.");}
 							}
 							if(num==5) {
 								String delete = null;
 								System.out.print("삭제하시겠습니까? (Y/N)");
 								delete = scanner.next();
-								if(delete.equalsIgnoreCase("Y")){id[i]=null;pass[i]=null;age[i]=0;bal[i] = 0;;cnt--;}match=false;break;
+								if(delete.equalsIgnoreCase("Y")){id[index]=null;pass[index]=null;age[index]=0;bal[index] = 0;;cnt--;}
 							}
-						}
-						else System.out.println("조회에 실패했습니다.");break;
-						
+							match=false;
 					}
-
+					else {System.out.println("조회에 실패했습니다.");}
 				}
 			
 			}
