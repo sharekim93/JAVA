@@ -44,6 +44,9 @@ public class Method028 {
 		return user2;
 		
 	}
+	//method name : user_input
+	//return : String[]
+	//parameter : 없음	
 	
 	public static void user_show(String user2[]) {
 
@@ -54,7 +57,10 @@ public class Method028 {
 		System.out.print("3. address : ");
 		System.out.println(user2[2]);
 	}
-		
+	
+	//method name : user_show
+	//return : void
+	//parameter : String user2[]
 	
 	
 
