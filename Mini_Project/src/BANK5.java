@@ -4,14 +4,13 @@ public class BANK5 {
 
 	public static void main(String[] args) {
 
-		int num = 0,money=0,cnt=0,sub=0;
+		int num = 0,money=0,cnt=0,index=0;
 		int[] age = { 0, 0, 0 };
 		int[] bal = { 0, 0, 0 };
-		int[] check = { 0, 0, 0 };
-		boolean match =false;
+		boolean match =false, input_id=true;
 		String[] id = new String[3];
 		String[] pass = new String[3];
-		String next = null;
+		String next=null,id_check=null;
 		Scanner scanner = new Scanner(System.in);
 		
 		for (;;) {
@@ -27,29 +26,28 @@ public class BANK5 {
 			
 			if (num == 1 || num == 2 || num == 3 || num == 4 || num == 5 || num == 9) {
 				if (num == 1) {
-					if (cnt < 3) {
-						for (int i=0;i<id.length;i++){
-							for(int j=0;j<id.length;j++)
-								if(id[i]==id[j]) {System.out.println("이미 존재하는 아이디입니다.");}
-								else {
-							if(check[i]==0) {							
-							System.out.print("*ID :");
-							id[i] = scanner.next();
-							System.out.print("*PASS :");
-							pass[i] = scanner.next();
-							System.out.print("*AGE :");
-							age[i] = scanner.nextInt();
-							System.out.print("*BALANCE :");
-							bal[i] = scanner.nextInt();
-							System.out.println();
-							check[i]=1;break;}
-							}
-							}
-						cnt++;
-						}
-					else
-						System.out.println("더 이상 신규가입이 불가합니다.");
+					for(int i=0;i<id.length;i++) {
+						if(id[i]==null) {index=i;}
 					}
+					if(cnt<3) {
+						System.out.print("*ID :");
+						id_check=scanner.next();
+						for(int i=0;i<id.length;i++) {
+							if(id_check.equals(id[i])) {System.out.println("이미 존재하는 아이디입니다.");input_id=false;break;}
+						}
+						if(input_id) {
+						id[index]=id_check;
+						System.out.print("*PASS :");
+						pass[index] = scanner.next();
+						System.out.print("*AGE :");
+						age[index] = scanner.nextInt();
+						System.out.print("*BALANCE :");
+						bal[index] = scanner.nextInt();
+						System.out.println();
+						cnt++;}
+					}
+					else System.out.println("더 이상 신규가입이 불가합니다.");
+				}
 				else if(num == 9) {break;}
 				else {
 					String temp_id = null, temp_pass=null;
@@ -60,9 +58,8 @@ public class BANK5 {
 
 					
 					for (int i = 0; i < 3; i++) {
-						if(id[i]!=null&&id[i].equals(temp_id) && pass[i]!=null&&pass[i].equals(temp_pass))
+						if(id[i]!=null&&temp_id.equals(id[i]) && pass[i]!=null&&temp_pass.equals(pass[i]))
 						{match=true;}
-						
 						if (match)	{
 							if(num==2) {
 								System.out.println("======조회결과======\n\n아이디 : "
@@ -89,10 +86,10 @@ public class BANK5 {
 								String delete = null;
 								System.out.print("삭제하시겠습니까? (Y/N)");
 								delete = scanner.next();
-								if(delete.equalsIgnoreCase("Y")){id[i]=null;pass[i]=null;age[i]=0;bal[i] = 0;check[i]=0;cnt--;}match=false;break;
+								if(delete.equalsIgnoreCase("Y")){id[i]=null;pass[i]=null;age[i]=0;bal[i] = 0;;cnt--;}match=false;break;
 							}
 						}
-						else System.out.println("조회에 실패했습니다.");
+						else System.out.println("조회에 실패했습니다.");break;
 						
 					}
 
