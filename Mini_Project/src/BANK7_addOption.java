@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class BANK7_addOption {
@@ -5,10 +7,10 @@ public class BANK7_addOption {
 	public static void main(String[] args) {
 		int num=0;
 		//변수
-		String[][]users= new String[3][3];
+		String[][]users= new String[3][4];
 		
 		do {
-			num=menu();
+			num=menu(users);
 			switch(num) {
 			case 1 : input(users);break;
 			case 2 : show(users);break;
@@ -20,9 +22,10 @@ public class BANK7_addOption {
 		while(num!=9);
 	}
 
-	public static int menu() {
+	public static int menu(String[][]users) {
 		int num=0;
 		Scanner scanner = new Scanner(System.in);
+
 		System.out.println("======BANK======\r"
 				+ "1.추가\r"
 				+ "2.조회\r"
@@ -31,6 +34,7 @@ public class BANK7_addOption {
 				+ "5.삭제\r"
 				+ "9.종료\r"
 				+ "입력>>> ");
+		
 		num=scanner.nextInt();
 		return num;
 	}
@@ -65,6 +69,7 @@ public class BANK7_addOption {
 								users[index][0] = temp_id;
 								users[index][1] = temp_pass;
 								users[index][2] = temp_bal;
+								users[index][3] = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 							}
 						}
 					}
@@ -97,7 +102,10 @@ public class BANK7_addOption {
 			System.out.println("======조회결과======\n\n아이디 : "
 					+users[index][0]+"\n암호 : "
 					+users[index][1]+"\n잔액 : "
-					+users[index][2]+"\n조회가 성공했습니다.\n\n아무키나 누르세요\n");
+					+users[index][2]+"\n추가시간 : "
+					+users[index][3]+"\n조회가 성공했습니다.\n");
+			printCalendar(users[index][3]);
+			System.out.println("\n아무키나 누르세요\n");
 			scanner.nextLine();
 		}
 		else {System.out.println("조회에 실패했습니다.");}
@@ -229,5 +237,22 @@ public class BANK7_addOption {
 	public static boolean validate_bal(String bal) {
 		if(Integer.parseInt(bal)>0) {return true;}
 		else {System.out.println("입력 금액을 확인해주세요");return false;}
+	}
+	
+	public static void printArr(String arr[][]) {
+		System.out.println("====print array====");
+		for(int i=0;i<arr.length;i++) {
+			for(int j=0;j<arr[i].length;j++) {
+				System.out.print(arr[i][j]+" ");
+			}
+			System.out.println();
+		}
+	}
+	
+	public static void printCalendar(String time) {
+		String month[]=time.split("-");
+		System.out.println("===== "+month[1]+"월 =====");
+		
+		
 	}
 }
