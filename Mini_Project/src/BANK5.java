@@ -1,5 +1,16 @@
 import java.util.Scanner;
 
+/*
+ ※ BANK 5번 수정한 내용
+  # 문제
+  1.각 user의 index 없이 user를 추가한 횟수만 count하여 user 삭제에 오류(임의의 user가 삭제 됨)
+  2.旣 입력한 id check 기능의 부재
+  
+  # 수정내용
+  1. int형 변수 index를 선언하여 id 배열에서 null 값인 element number를 index로 대입
+  2. id 입력 이후 for문,if문 이용 id 중복 확인 코드 추가
+ */
+
 public class BANK5 {
 
 	public static void main(String[] args) {
