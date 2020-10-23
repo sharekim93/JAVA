@@ -34,6 +34,7 @@ public class BANK7_addOption {
 				+ "5.삭제\r"
 				+ "9.종료\r"
 				+ "입력>>> ");
+		
 		num=scanner.nextInt();
 		return num;
 	}
@@ -252,34 +253,36 @@ public class BANK7_addOption {
 		int sum=0;
 		int months[] = {31,28,31,30,31,30,31,31,30,31,30,31};
 		String time[] =pre_time.split(" ");
-		String month[]=time[0].split("-");
+		String date[]=time[0].split("-");
 		
 		// 작년까지의 일수 더하기
-		for(int i=1; i<Integer.parseInt(month[0]);i++){
+		for(int i=1; i<Integer.parseInt(date[0]);i++){
 			if(leap(i)) {sum+=366;}
 			else {sum+=365;}
 		}
 		
 		// 금월까지의 일수 더하기
 		
-		if(leap(Integer.parseInt(month[0]))) {months[1]=29;}
-		for (int i=0; i<Integer.parseInt(month[1])-1;i++)
+
+		for (int i=0; i<Integer.parseInt(date[1])-1;i++)
 		{sum+=months[i];}
+		if(leap(Integer.parseInt(date[0]))) {sum++;}
 		
 		// 금일까지의 일수 더하기
-		sum+=Integer.parseInt(month[2]);
+		sum+=Integer.parseInt(date[2]);
 		System.out.println("총 일수 : "+sum);
 		
-		System.out.println("================== "+month[1]+"월 ==================");
-		if((sum+1)%7!=0) {
+		System.out.println("====================== "+date[1]+"월 ======================");
+		System.out.println("일\t월\t화\t수\t목\t금\t토");
+		if((sum-2)%7!=0) {
 			for (int j=0;j<7;j++) {
-				if(j<=(sum+1)%7) {System.out.print("*\t");}
-				else System.out.print(j-(sum+1)%7+"\t");
+				if(j<=(sum-2)%7) {System.out.print("*\t");}
+				else System.out.print(j-(sum-2)%7+"\t");
 				}
 			System.out.println();
 		}
 			int count=0;
-			for (int j=7-(sum+1)%7;j<=Integer.parseInt(month[2]);j++) {
+			for (int j=7-(sum-2)%7;j<=months[Integer.parseInt(date[1])];j++) {
 				System.out.print(j+"\t");count++;
 				if (count%7==0) {System.out.println();}
 			}
