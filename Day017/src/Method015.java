@@ -88,7 +88,7 @@ public class Method015 {
 	//기능 : 입력한 변수를 이용 입력월의 달력을 출력하는 기능
 	
 	public static void main(String[] args) {
-		myCalendar(2019,2,27);
+		myCalendar(2020,10,23);
 
 	}
 

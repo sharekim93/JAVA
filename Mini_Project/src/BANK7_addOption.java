@@ -34,7 +34,6 @@ public class BANK7_addOption {
 				+ "5.삭제\r"
 				+ "9.종료\r"
 				+ "입력>>> ");
-		
 		num=scanner.nextInt();
 		return num;
 	}
@@ -54,14 +53,14 @@ public class BANK7_addOption {
 		}
 			if(cnt<3) {
 				System.out.print("*ID :");
-				temp_id=scanner.next();
+				temp_id=scanner.nextLine();
 				if(validate_id(temp_id)){
 					for(int i=0;i<users.length;i++) {
 						if(temp_id.equals(users[i][0])) {System.out.println("이미 존재하는 아이디입니다.");overlap=false;break;}
 					}
 					if(overlap) {
 						System.out.print("*PASS :");
-						temp_pass = scanner.next();
+						temp_pass = scanner.nextLine();
 						if(validate_pass(temp_pass)) {
 							System.out.print("*BALANCE :");
 							temp_bal = scanner.next();
@@ -205,7 +204,7 @@ public class BANK7_addOption {
 		boolean at=false;
 		
 			for (int j=0; j<id.length();j++) {
-				if(id.charAt(j)==' ') {space=true;}
+				if(id.charAt(j)==32) {space=true;}
 				if(id.charAt(j)=='@') {at=true;}
 				if(id.charAt(j)=='.') {dot=true;}
 			}
@@ -249,10 +248,48 @@ public class BANK7_addOption {
 		}
 	}
 	
-	public static void printCalendar(String time) {
-		String month[]=time.split("-");
-		System.out.println("===== "+month[1]+"월 =====");
+	public static void printCalendar(String pre_time) {
+		int sum=0;
+		int months[] = {31,28,31,30,31,30,31,31,30,31,30,31};
+		String time[] =pre_time.split(" ");
+		String month[]=time[0].split("-");
 		
+		// 작년까지의 일수 더하기
+		for(int i=1; i<Integer.parseInt(month[0]);i++){
+			if(leap(i)) {sum+=366;}
+			else {sum+=365;}
+		}
 		
+		// 금월까지의 일수 더하기
+		
+		if(leap(Integer.parseInt(month[0]))) {months[1]=29;}
+		for (int i=0; i<Integer.parseInt(month[1])-1;i++)
+		{sum+=months[i];}
+		
+		// 금일까지의 일수 더하기
+		sum+=Integer.parseInt(month[2]);
+		System.out.println("총 일수 : "+sum);
+		
+		System.out.println("================== "+month[1]+"월 ==================");
+		if((sum+1)%7!=0) {
+			for (int j=0;j<7;j++) {
+				if(j<=(sum+1)%7) {System.out.print("*\t");}
+				else System.out.print(j-(sum+1)%7+"\t");
+				}
+			System.out.println();
+		}
+			int count=0;
+			for (int j=7-(sum+1)%7;j<=Integer.parseInt(month[2]);j++) {
+				System.out.print(j+"\t");count++;
+				if (count%7==0) {System.out.println();}
+			}
+			System.out.println();
+				
+		
+	}
+	
+	public static boolean leap(int n) {
+		if (n%4==0&&n%100!=0||n%400==0) return true;
+		else return false;
 	}
 }
