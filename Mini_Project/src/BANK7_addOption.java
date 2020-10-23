@@ -34,7 +34,7 @@ public class BANK7_addOption {
 				+ "5.삭제\r"
 				+ "9.종료\r"
 				+ "입력>>> ");
-		
+		printCalendar(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 		num=scanner.nextInt();
 		return num;
 	}
@@ -270,7 +270,7 @@ public class BANK7_addOption {
 		
 		// 금일까지의 일수 더하기
 		sum+=Integer.parseInt(date[2]);
-		System.out.println("총 일수 : "+sum);
+		System.out.println();
 		
 		System.out.println("====================== "+date[1]+"월 ======================");
 		System.out.println("일\t월\t화\t수\t목\t금\t토");
