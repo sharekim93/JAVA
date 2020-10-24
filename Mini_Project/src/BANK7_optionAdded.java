@@ -3,7 +3,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class BANK7_addOption {
+public class BANK7_optionAdded {
 
 	public static void main(String[] args) {
 		int num=0;
@@ -126,7 +126,6 @@ public class BANK7_addOption {
 			printCalendar(users[index][3]);
 			
 			System.out.println("\n아무키나 누르세요\n");
-			scanner.nextLine();
 		}
 		else {System.out.println("조회에 실패했습니다.");}
 	}
