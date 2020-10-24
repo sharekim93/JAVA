@@ -1,12 +1,13 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class BANK7_addOption {
 
 	public static void main(String[] args) {
 		int num=0;
-		//변수
+		// 사용자가 추가된 시간 값을 담기 위해 3X4 배열로 변경해서 작성했습니다.
 		String[][]users= new String[3][4];
 		
 		do {
@@ -25,7 +26,8 @@ public class BANK7_addOption {
 	public static int menu(String[][]users) {
 		int num=0;
 		Scanner scanner = new Scanner(System.in);
-
+		
+		// 메뉴 출력
 		System.out.println("======BANK======\r"
 				+ "1.추가\r"
 				+ "2.조회\r"
@@ -34,20 +36,29 @@ public class BANK7_addOption {
 				+ "5.삭제\r"
 				+ "9.종료\r"
 				+ "입력>>> ");
+		System.out.println();
+		
+		// 배열 출력
+		System.out.println(Arrays.deepToString(users));
+		// 이번 달 달력 출력
 		printCalendar(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+		
 		num=scanner.nextInt();
 		return num;
 	}
+	
 	//method name : menu
 	//return : int
-	//parameter : int num
+	//parameter : String[][]users
 	
 	public static void input(String users[][]) {
-		int index=0,cnt=0;
-		boolean overlap=true;
+		//변수
+		int cnt=0;int index=0;
+		boolean notOverLapped=true;
 		String temp_id=null,temp_pass=null,temp_bal=null;
 		Scanner scanner = new Scanner(System.in);
 		
+		// null값을 index에 대입. null이 아닌 경우 cnt++
 		for(int i=0;i<users.length;i++) {
 			if(users[i][0]==null) {index=i;}
 			else {cnt++;}
@@ -55,20 +66,25 @@ public class BANK7_addOption {
 			if(cnt<3) {
 				System.out.print("*ID :");
 				temp_id=scanner.nextLine();
+				
+				// id 유효성 체크(공백포함여부, @와 . 포함여부, 아이디 중복 체크)
 				if(validate_id(temp_id)){
 					for(int i=0;i<users.length;i++) {
-						if(temp_id.equals(users[i][0])) {System.out.println("이미 존재하는 아이디입니다.");overlap=false;break;}
+						if(temp_id.equals(users[i][0])) {System.out.println("이미 존재하는 아이디입니다.");notOverLapped=false;break;}
 					}
-					if(overlap) {
+					if(notOverLapped) {
 						System.out.print("*PASS :");
 						temp_pass = scanner.nextLine();
+						// password 유효성 체크(공백포함여부,비밀번호 확인)
 						if(validate_pass(temp_pass)) {
 							System.out.print("*BALANCE :");
 							temp_bal = scanner.next();
+							// balance 입력값 체크 (0원 초과 입력 여부)
 							if(validate_bal(temp_bal)) {
 								users[index][0] = temp_id;
 								users[index][1] = temp_pass;
 								users[index][2] = temp_bal;
+								// 저장 시간 입력
 								users[index][3] = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 							}
 						}
@@ -78,6 +94,7 @@ public class BANK7_addOption {
 			else System.out.println("더 이상 신규가입이 불가합니다.");
 
 	}
+	
 	//method name : input
 	//return : void
 	//parameter : String users[][]
@@ -104,7 +121,10 @@ public class BANK7_addOption {
 					+users[index][1]+"\n잔액 : "
 					+users[index][2]+"\n추가시간 : "
 					+users[index][3]+"\n조회가 성공했습니다.\n");
+			
+			// 사용자가 추가된 월의 달력 출력
 			printCalendar(users[index][3]);
+			
 			System.out.println("\n아무키나 누르세요\n");
 			scanner.nextLine();
 		}
@@ -191,7 +211,7 @@ public class BANK7_addOption {
 			String delete = null;
 			System.out.print("삭제하시겠습니까? (Y/N)");
 			delete = scanner.next();
-			if(delete.equalsIgnoreCase("Y")){users[index][0]=null;users[index][1]=null;users[index][2]=null;}
+			if(delete.equalsIgnoreCase("Y")){users[index][0]=null;users[index][1]=null;users[index][2]=null;users[index][3]=null;}
 		}
 		else {System.out.println("조회에 실패했습니다.");}
 	}
@@ -234,20 +254,18 @@ public class BANK7_addOption {
 		else {System.out.println("비밀번호가 일치하지 않습니다.");return false;}
 	}
 	
+	//method name : validate_pass
+	//return : boolean
+	//parameter : String pass
+	
 	public static boolean validate_bal(String bal) {
 		if(Integer.parseInt(bal)>0) {return true;}
 		else {System.out.println("입력 금액을 확인해주세요");return false;}
 	}
 	
-	public static void printArr(String arr[][]) {
-		System.out.println("====print array====");
-		for(int i=0;i<arr.length;i++) {
-			for(int j=0;j<arr[i].length;j++) {
-				System.out.print(arr[i][j]+" ");
-			}
-			System.out.println();
-		}
-	}
+	//method name : validate_bal
+	//return : boolean
+	//parameter : String bal
 	
 	public static void printCalendar(String pre_time) {
 		int sum=0;
@@ -262,37 +280,38 @@ public class BANK7_addOption {
 		}
 		
 		// 금월까지의 일수 더하기
-		
-
 		for (int i=0; i<Integer.parseInt(date[1])-1;i++)
 		{sum+=months[i];}
 		if(leap(Integer.parseInt(date[0]))) {sum++;}
 		
-		// 금일까지의 일수 더하기
-		sum+=Integer.parseInt(date[2]);
-		System.out.println();
 		
 		System.out.println("====================== "+date[1]+"월 ======================");
 		System.out.println("일\t월\t화\t수\t목\t금\t토");
-		if((sum-2)%7!=0) {
+		if(sum%7!=0) {
 			for (int j=0;j<7;j++) {
-				if(j<=(sum-2)%7) {System.out.print("*\t");}
-				else System.out.print(j-(sum-2)%7+"\t");
+				if(j<=sum%7) {System.out.print("*\t");}
+				else System.out.print(j-sum%7+"\t");
 				}
 			System.out.println();
 		}
 			int count=0;
-			for (int j=7-(sum-2)%7;j<=months[Integer.parseInt(date[1])];j++) {
+			for (int j=7-sum%7;j<=months[Integer.parseInt(date[1])];j++) {
 				System.out.print(j+"\t");count++;
 				if (count%7==0) {System.out.println();}
 			}
 			System.out.println();
-				
-		
 	}
+	
+	//method name : printCalendar
+	//return : void
+	//parameter : String pre_time
 	
 	public static boolean leap(int n) {
 		if (n%4==0&&n%100!=0||n%400==0) return true;
 		else return false;
 	}
+	
+	//method name : leap
+	//return : boolean
+	//parameter : int n
 }
