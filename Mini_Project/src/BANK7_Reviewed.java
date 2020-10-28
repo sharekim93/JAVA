@@ -59,7 +59,7 @@ public class BANK7_Reviewed {
 	
 	public static void input(String users[][]) {
 		//변수
-		int cnt=0;int index=0;
+		int index=-1;
 		boolean notOverLapped=true;
 		String temp_id=null,temp_pass=null,temp_bal=null;
 		Scanner scanner = new Scanner(System.in);
