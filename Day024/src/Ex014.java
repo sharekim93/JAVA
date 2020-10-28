@@ -1,6 +1,5 @@
 
 public class Ex014 {
-
 	public static void main(String[] args) {
 		/*
 		Q14. 다음 중 초기화에 대한 설명으로 옳지 않은 것을 모두 고르시오
@@ -10,11 +9,8 @@ public class Ex014 {
 		d. 명시적 초기화를 제일 우선적으로 고려해야 한다.
 		e. 클래스변수보다 인스턴스 변수가 먼저 초기화 된다.
 		
-		정답 : c,e
-		
-		
+		정답 : c,d,e
 		 */
-
 	}
 
 }
