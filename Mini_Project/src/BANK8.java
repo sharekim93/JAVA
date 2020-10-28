@@ -9,8 +9,7 @@ class Bank_v1{
 	
 	int menu() {
 		Scanner scanner = new Scanner(System.in);
-		
-		// 메뉴 출력
+
 		System.out.println("======BANK======\r"
 				+ "1.추가\r"
 				+ "2.조회\r"
@@ -51,6 +50,7 @@ class Bank_v1{
 		}
 	
 	void show() {
+		if(!userinfo()) {System.out.println("조회에 실패했습니다.");return;}
 		System.out.println("======조회결과======\n\n아이디 : "
 				+this.id+"\n암호 : "
 				+this.pass+"\n잔액 : "
@@ -59,22 +59,27 @@ class Bank_v1{
 	}
 	
 	void deposit () {
-		int money=0;
+		double money=0;
 		Scanner scanner = new Scanner(System.in);
-
-		System.out.print("입금할 금액을 입력해주세요 > ");
-		money = scanner.nextInt();
 		
-		if (money>=0) {this.balance =this.balance+money;}
+		System.out.println("=====입금 계좌정보 입력=====");
+		if(!userinfo()) {System.out.println("계좌 정보가 없습니다.");return;}
+		System.out.print("입금액 : ");
+	
+		money=scanner.nextDouble();
+		if (scanner.nextInt()>=0) {this.balance =this.balance+money;}
 		else System.out.println("잘못 입력하셨습니다.");
 	}
 	
 	void withdraw() {
-		int money=0;
+		double money=0;
 		Scanner scanner = new Scanner(System.in);
 		
-		System.out.print("출금액 :");
-		money = scanner.nextInt();
+		System.out.println("=====출금 계좌정보 입력=====");
+		if(!userinfo()) {System.out.println("계좌 정보가 없습니다.");return;}
+		System.out.print("출금액 : ");
+		
+		money=scanner.nextDouble();
 		if (this.balance-money>=0) {this.balance=this.balance-money;}
 		else if (this.balance-money<0) {System.out.println("금액이 모자랍니다.");}
 		else if (money<0) {System.out.println("잘못 입력하셨습니다.");}
@@ -82,26 +87,19 @@ class Bank_v1{
 	
 	void delete() {
 		Scanner scanner = new Scanner(System.in);
-			System.out.print("삭제하시겠습니까? (Y/N)");
-			if(scanner.next().equalsIgnoreCase("Y"))
-			{this.id=null;this.pass=null;this.balance=0;}
+		if(!userinfo()) {System.out.println("계좌 정보가 없습니다.");return;}
+		System.out.print("삭제하시겠습니까? (Y/N)");
+		if(scanner.next().equalsIgnoreCase("Y"))
+		{this.id=null;this.pass=null;this.balance=0;}
 		}
 		
 	boolean validate_id(String id) {
 		boolean space=false;
-		boolean dot =false;
-		boolean at=false;
 		
 		for (int j=0; j<id.length();j++) {
 			if(id.charAt(j)=='\s') {space=true;}
-			if(id.charAt(j)=='@') {at=true;}
-			if(id.charAt(j)=='.') {dot=true;} 
 		}
-		if (space) {System.out.println("ID에 빈칸이 입력 되었습니다.");}
-		if (!dot) {System.out.println("ID에 .를 입력해주세요");}
-		if (!at) {System.out.println("ID에 @를 입력해주세요.");}
-		
-		if(space||!dot||!at) return false;
+		if(space) {System.out.println("ID에 빈칸이 입력 되었습니다.");return false;}
 		else return true;
 	}
 	
@@ -120,11 +118,23 @@ class Bank_v1{
 		else {System.out.println("비밀번호가 일치하지 않습니다.");return false;}
 	}
 	
-	public static boolean validate_bal(double bal) {
+	boolean validate_bal(double bal) {
 		if(bal>0) {return true;}
 		else {System.out.println("입력 금액을 확인해주세요");return false;}
 	}
 	
+	boolean userinfo() {
+		String temp_id = null, temp_pass=null;
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("*ID :");
+		temp_id = scanner.nextLine();
+		System.out.print("*PASS :");
+		temp_pass = scanner.nextLine();
+		
+		if(temp_id.equals(this.id) && temp_pass.equals(this.pass)){return true;}
+		else return false;
+	}
 }
 
 public class BANK8 {
