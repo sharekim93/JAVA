@@ -82,10 +82,8 @@ class Bank_v1{
 	
 	void delete() {
 		Scanner scanner = new Scanner(System.in);
-		String delete = null;
 			System.out.print("삭제하시겠습니까? (Y/N)");
-			delete = scanner.next();
-			if(delete.equalsIgnoreCase("Y"))
+			if(scanner.next().equalsIgnoreCase("Y"))
 			{this.id=null;this.pass=null;this.balance=0;}
 		}
 		
@@ -133,15 +131,17 @@ public class BANK8 {
 
 	public static void main(String[] args) {
 		Bank_v1  user1 = new Bank_v1();
+		int num=0;
 		do {
-		    switch (user1.menu()) {
+			num=user1.menu();
+		    switch (num) {
 			case 1: user1.input(); break;
 			case 2: user1.show(); break;
 			case 3: user1.deposit(); break;
 			case 4: user1.withdraw(); break;
 			case 5: user1.delete(); break;
 		       }
-		} while (user1.menu() != 9);
+		} while (num != 9);
 	}
 
 }
