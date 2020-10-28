@@ -3,7 +3,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class BANK7_Reviewed {
+public class BANK7_Reviewed_Edited {
 	
 	public static String[][]users= new String[3][4];
 
@@ -42,7 +42,7 @@ public class BANK7_Reviewed {
 		// 배열 출력
 		System.out.println(Arrays.deepToString(users));
 		// 이번 달 달력 출력
-		printCalendar(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+		printCalendar(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 		
 		num=scanner.nextInt();
 		return num;
@@ -52,11 +52,6 @@ public class BANK7_Reviewed {
 	//return : int
 	//parameter : String[][]users
 	
-	
-	//////요구사항1. : 인증하는메서드하나만들어주세요 
-	//////요구사항2. : public static void input(String users[][])  단계별로 끊어주세요!
-	
-	
 	public static void input(String users[][]) {
 		//변수
 		int index=-1;
@@ -64,13 +59,12 @@ public class BANK7_Reviewed {
 		String temp_id=null,temp_pass=null,temp_bal=null;
 		Scanner scanner = new Scanner(System.in);
 		
-		// null값을 index에 대입. null이 아닌 경우 cnt++
+		// null값을 index에 대입. null이 없는 경우 return;
 		for(int i=0;i<users.length;i++) {
 			if(users[i][0]==null) {index=i;break;}
-			else {cnt++;}
-		}
-		////////////////////////////////////////////////
+		}		
 		
+		if (index!=-1) {
 		System.out.print("*ID :");
 		temp_id=scanner.nextLine();
 		
@@ -79,40 +73,27 @@ public class BANK7_Reviewed {
 				if(temp_id.equals(users[i][0])) {System.out.println("이미 존재하는 아이디입니다.");
 				notOverLapped=false;
 				break;}
-			}
+			}// id 유효성 체크(공백포함여부, @와 . 포함여부)
 		}
-		else return ;  /// method
-		
- 
-		/*
-			if(cnt<3) {
-		
+		else return ;
+		if(!notOverLapped) {return;} // id 중복체크
 				
-				// id 유효성 체크(공백포함여부, @와 . 포함여부, 아이디 중복 체크)
-				
-					if(notOverLapped) {
-						System.out.print("*PASS :");
-						temp_pass = scanner.nextLine();
-						// password 유효성 체크(공백포함여부,비밀번호 확인)
-						if(validate_pass(temp_pass)) {
-							System.out.print("*BALANCE :");
-							temp_bal = scanner.next();
-							// balance 입력값 체크 (0원 초과 입력 여부)
-							if(validate_bal(temp_bal)) {
-								users[index][0] = temp_id;
-								users[index][1] = temp_pass;
-								users[index][2] = temp_bal;
-								// 저장 시간 입력
-								users[index][3] = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-							}
-						}
-					}
-				}
-			}
-			else System.out.println("더 이상 신규가입이 불가합니다.");
-		*/
+		System.out.print("*PASS :");
+		temp_pass = scanner.nextLine();
+		if(!validate_pass(temp_pass)) {return;} // password 유효성 체크(공백포함여부,비밀번호 확인)
+		
+		System.out.print("*BALANCE :");
+		temp_bal = scanner.next();
+		if(!validate_bal(temp_bal)) {return;} // balance 입력값 체크 (0원 초과 입력 여부)
+		
+			users[index][0] = temp_id;
+			users[index][1] = temp_pass;
+			users[index][2] = temp_bal;
+			// 저장 시간 입력
+			users[index][3] = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		}
+		else System.out.println("더 이상 신규가입이 불가합니다.");return;
 	}
-	
 	//method name : input
 	//return : void
 	//parameter : String users[][]
@@ -120,12 +101,12 @@ public class BANK7_Reviewed {
 
 	public static void show(String users[][]) {
 		int index=-1;
-		userinfo();
-		if (index>0)	{
+		index=userinfo();
+		if (index>=0)	{
 			System.out.println("======조회결과======\n\n아이디 : "
 					+users[index][0]+"\n암호 : "
 					+users[index][1]+"\n잔액 : "
-					+users[index][2]+"\n추가시간 : "
+					+users[index][2]+"\n추가일자 : "
 					+users[index][3]+"\n조회가 성공했습니다.\n");
 			
 			// 사용자가 추가된 월의 달력 출력
@@ -142,9 +123,9 @@ public class BANK7_Reviewed {
 	public static void deposit (String users[][]) {
 		int index=-1;  int money=0;
 		Scanner scanner = new Scanner(System.in);
-		userinfo();
-		if(index>0) {
-		System.out.print("입금할 금액을 입력해주세요");
+		index=userinfo();
+		if(index>=0) {
+		System.out.print("입금할 금액을 입력해주세요 > ");
 		money = scanner.nextInt();
 		if (money>=0) {users[index][2] =""+(Integer.parseInt(users[index][2])+money);}
 		else System.out.println("잘못 입력하셨습니다.");
@@ -158,8 +139,8 @@ public class BANK7_Reviewed {
 	public static void withdraw(String users[][]) {
 		int index=-1;  int money=0;
 		Scanner scanner = new Scanner(System.in);
-		userinfo();
-		if(index>0) {
+		index=userinfo();
+		if(index>=0) {
 		System.out.print("출금액 :");
 		money = scanner.nextInt();
 		if (Integer.parseInt(users[index][2])-money>=0) {users[index][2]=""+(Integer.parseInt(users[index][2])-money);}
@@ -173,10 +154,10 @@ public class BANK7_Reviewed {
 	//parameter : String users[][]
 	
 	public static void delete(String users[][]) {
-		int index=-1;  int money=0;
+		int index=-1;
 		Scanner scanner = new Scanner(System.in);
-		userinfo();
-		if(index>0) {
+		index=userinfo();
+		if(index>=0) {
 			String delete = null;
 			System.out.print("삭제하시겠습니까? (Y/N)");
 			delete = scanner.next();
@@ -195,7 +176,7 @@ public class BANK7_Reviewed {
 		boolean at=false;
 		
 		for (int j=0; j<id.length();j++) {
-			if(id.charAt(j)==32) {space=true;}
+			if(id.charAt(j)=='\s') {space=true;}
 			if(id.charAt(j)=='@') {at=true;}
 			if(id.charAt(j)=='.') {dot=true;} 
 		}
@@ -216,10 +197,11 @@ public class BANK7_Reviewed {
 		Scanner scanner = new Scanner(System.in);
 		
 		for (int j=0; j<pass.length();j++) {
-			if(pass.charAt(j)==' ') {space=true;}
+			if(pass.charAt(j)=='\s') {space=true;}
 		}
+		if(space) {System.out.println("비밀번호에 빈칸이 입력되었습니다.");return false;}
 		System.out.println("비밀번호를 한 번 더 입력하세요 > ");
-		temp_pass = scanner.next();
+		temp_pass = scanner.nextLine();
 		if(pass.equals(temp_pass)) return true;
 		else {System.out.println("비밀번호가 일치하지 않습니다.");return false;}
 	}
@@ -237,11 +219,10 @@ public class BANK7_Reviewed {
 	//return : boolean
 	//parameter : String bal
 	
-	public static void printCalendar(String pre_time) {
+	public static void printCalendar(String time) {
 		int sum=0;
 		int months[] = {31,28,31,30,31,30,31,31,30,31,30,31};
-		String time[] =pre_time.split(" ");
-		String date[]=time[0].split("-");
+		String date[]=time.split("-");
 		
 		// 작년까지의 일수 더하기
 		for(int i=1; i<Integer.parseInt(date[0]);i++){
@@ -287,17 +268,17 @@ public class BANK7_Reviewed {
 	
 	public static int userinfo() {
 		String temp_id = null, temp_pass=null;
-		int index=0;
+		int index=-1;
 		Scanner scanner = new Scanner(System.in);
 		
-		System.out.println("*ID :");
+		System.out.print("*ID :");
 		temp_id = scanner.next();
-		System.out.println("*PASS :");
+		System.out.print("*PASS :");
 		temp_pass = scanner.next();
 		
 		for (int i = 0; i < users.length; i++) {
 			if(users[i][0]!=null&&temp_id.equals(users[i][0]) && users[i][1]!=null&&temp_pass.equals(users[i][1]))
-			{index=i;break;}break;
+			{index=i;break;}
 		}
 		return index;
 	}

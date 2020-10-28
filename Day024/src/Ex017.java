@@ -15,8 +15,10 @@ public class Ex017 {
 		 d. println 메서드가 종료되면 method1 메서드 수행을 재개한다.
 		 e. main-method2-method1-println의 순서대로 호출되었다.
 		 f. 현재 실행중인 메서드는 println뿐이다.
+		 // running method now = println
+		    called method now = main, method1, method2, println
 		 
-		 정답 : b,f
+		 정답 : b
 		 */
 	}
 
