@@ -30,13 +30,7 @@ public class BANK7_Reviewed_Edited {
 		
 		// 메뉴 출력
 		System.out.println("======BANK======\r"
-				+ "1.추가\r"
-				+ "2.조회\r"
-				+ "3.입금\r"
-				+ "4.출금\r"
-				+ "5.삭제\r"
-				+ "9.종료\r"
-				+ "입력>>> ");
+				+ "1.추가\r"	+ "2.조회\r"	+ "3.입금\r"	+ "4.출금\r"	+ "5.삭제\r"	+ "9.종료\r"	+ "입력>>> ");
 		System.out.println();
 		
 		// 배열 출력
@@ -277,7 +271,7 @@ public class BANK7_Reviewed_Edited {
 		temp_pass = scanner.next();
 		
 		for (int i = 0; i < users.length; i++) {
-			if(users[i][0]!=null&&temp_id.equals(users[i][0]) && users[i][1]!=null&&temp_pass.equals(users[i][1]))
+			if(temp_id.equals(users[i][0]) && temp_pass.equals(users[i][1]))
 			{index=i;break;}
 		}
 		return index;
