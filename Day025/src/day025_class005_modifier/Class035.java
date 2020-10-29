@@ -1,9 +1,9 @@
-package day025_class005_modifier;
+package Day025.src.day025_class005_modifier;
 
 public class Class035 {
 
 	public static void main(String[] args) {
-		Score_ver2 iron = new Score_ver2("아이언맨",100,100,99);
+		Score_ver3 iron = new Score_ver3("아이언맨",100,100,99);
 		Process process = new Process();
 		Pass 	pass 	= new Pass();
 		Scholar scholar = new Scholar();
@@ -25,7 +25,7 @@ public class Class035 {
 	}
 }
 
-class Score_ver2 {
+class Score_ver3 {
 	//멤버변수
 	private String name, pass, scholar, rank;
 	private int kor, eng, math, total;
@@ -59,7 +59,7 @@ class Score_ver2 {
 	public double getAver() {return aver;}
 	public void setAver(double aver) {this.aver = aver;}
 	
-	Score_ver2(){
+	Score_ver3(){
 		super();
 		this.name="";
 		this.kor=0;
@@ -71,7 +71,7 @@ class Score_ver2 {
 		this.rank="";
 		this.scholar="";	
 	}
-	Score_ver2(String name, int kor, int eng, int math){
+	Score_ver3(String name, int kor, int eng, int math){
 		this();
 		setName(name);;
 		setKor(kor);

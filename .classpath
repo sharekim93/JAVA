@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="Day007_Review/src/|Day003/src/|Day005/src/|Day007/src/|Day009/src/|Day010/src/|Mini_Project/src/|Day004/src/|Day006/src/|Day008/src/|Day011/src/|Day017/src/|Day014/" kind="src" path=""/>
+	<classpathentry kind="src" path="Day003/src"/>
+	<classpathentry kind="src" path="Day004/src"/>
+	<classpathentry kind="src" path="Day005/src"/>
+	<classpathentry kind="src" path="Day006/src"/>
+	<classpathentry kind="src" path="Day007_Review/src"/>
+	<classpathentry kind="src" path="Day007/src"/>
+	<classpathentry kind="src" path="Day008/src"/>
+	<classpathentry kind="src" path="Day009/src"/>
+	<classpathentry kind="src" path="Day010/src"/>
+	<classpathentry kind="src" path="Day011/src"/>
+	<classpathentry kind="src" path="Day014"/>
+	<classpathentry kind="src" path="Day017/src"/>
+	<classpathentry kind="src" path="Mini_Project/src"/>
+	<classpathentry kind="output" path="Day003/bin"/>
+</classpath>
