@@ -135,6 +135,8 @@ class Bank_v1{
 		if(temp_id.equals(this.id) && temp_pass.equals(this.pass)){return true;}
 		else return false;
 	}
+	
+	Bank_v1(){}
 }
 
 public class BANK8 {
