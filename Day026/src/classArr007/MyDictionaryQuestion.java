@@ -17,8 +17,8 @@ class MyDictionaryQuestion {
 			MyDictionary.dno_count++;
 			words[i].setDno(MyDictionary.dno_count);
 
-			for (int j = 0; j < words.length; j++) {
-				int random = (int) (Math.random() * (words.length - 1));
+			for (int j = 0; j < words[i].getWord().length(); j++) {
+				int random = (int) (Math.random() * (words[i].getWord().length() - 1));
 				char mix = temp[j];
 				temp[j] = temp[j + random];
 				temp[j + random] = mix;
