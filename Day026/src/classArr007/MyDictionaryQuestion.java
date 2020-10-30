@@ -20,8 +20,8 @@ class MyDictionaryQuestion {
 			for (int j = 0; j < words[i].getWord().length(); j++) {
 				int random = (int) (Math.random() * (words[i].getWord().length() - 1));
 				char mix = temp[j];
-				temp[j] = temp[j + random];
-				temp[j + random] = mix;
+				temp[j] = temp[random];
+				temp[random] = mix;
 			}
 			System.out.print("Q" + words[i].getDno() + ". ");
 			for (int j = 0; j < temp.length; j++) {
@@ -32,14 +32,15 @@ class MyDictionaryQuestion {
 			String word = scanner.nextLine();
 			if (words[i].getWord().equals(word)) {
 				System.out.println("맞았습니다.");
-				words[i].setWord("O");
+				words[i].setUserAnswer('O');
 				MyDictionary.trueAnswer++;
 			} else {
 				System.out.println("틀렸습니다.");
-				words[i].setWord("X");
+				words[i].setUserAnswer('X');
 			}
 		}
 
 	}
+
 
 }
