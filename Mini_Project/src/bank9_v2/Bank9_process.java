@@ -3,7 +3,7 @@ package bank9_v2;
 import java.util.Scanner;
 
 class Bank9_process {
-
+	Bank9_process(){super();}
 	void menu(Bank_v2 bank) {
 		Scanner scanner = new Scanner(System.in);
 		while(true){
