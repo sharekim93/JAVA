@@ -1,4 +1,4 @@
-package Day025.src.day025_class005_modifier;
+package day025_class005_modifier;
 
 public class Class035 {
 

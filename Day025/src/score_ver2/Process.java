@@ -1,4 +1,4 @@
-package Day025.src.score_ver2;
+package score_ver2;
 
 class Process{
 	Process(){super();}
