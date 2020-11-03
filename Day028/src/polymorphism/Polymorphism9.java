@@ -1,4 +1,4 @@
-package Day028.src.polymorphism;
+package polymorphism;
 
 import java.util.Arrays;
 
@@ -48,11 +48,11 @@ class ObjectTest2 {
 
 	ObjectTest2(){}
 	static ObjectTest2 disp(int i) {
-		return animal[i];
+		return animal[i+1];
 	}
 }
 
-class Polymorphism9 {
+public class Polymorphism9 {
 	public static void main(String[] args) {
 		Dog dog=(Dog)ObjectTest2.disp(1);
 		System.out.println(dog);

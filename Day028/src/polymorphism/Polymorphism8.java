@@ -20,7 +20,7 @@ package polymorphism;
 	
 	정답 : E /  하위 클래스에 상위 클래스로 인스턴스화 할 수 없음.
 */
-class Polymorphism8 {
+public class Polymorphism8 {
 	public static void main(String[] args) {
 		class Unit{}
 		class AirtUnit extends Unit{}
