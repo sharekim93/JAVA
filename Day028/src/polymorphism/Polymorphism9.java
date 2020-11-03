@@ -1,8 +1,6 @@
-package polymorphism;
-
 import java.util.Arrays;
 
-class Animal extends ObjectTest2{
+class Animal {
 	String name;
 	public Animal() {}
 	public Animal(String name) {super();this.name=name;}
@@ -13,9 +11,8 @@ class Dog extends Animal{
 	public Dog(String name) {super(name);}
 	@Override
 	public String toString() {
-		return "Dog [name=" + name + ", animal=" + Arrays.toString(animal) + "]";
+		return "Dog [name=" + name + "]";
 	}
-	
 }
 
 class Cat extends Animal{
@@ -23,7 +20,7 @@ class Cat extends Animal{
 	public Cat(String name) {super(name);}
 	@Override
 	public String toString() {
-		return "Cat [name=" + name + ", animal=" + Arrays.toString(animal) + "]";
+		return "Cat [name=" + name + "]";
 	}
 	
 }
@@ -33,22 +30,17 @@ class Pig extends Animal{
 	public Pig(String name) {super(name);}
 	@Override
 	public String toString() {
-		return "Pig [name=" + name + ", animal=" + Arrays.toString(animal) + "]";
+		return "Pig [name=" + name + "]";
 	}
 	
 }
 
 class ObjectTest2 {
-	static Animal[] animal=new Animal[3];
-	static{
-	animal[0] = new Dog("alpha");
-	animal[1] = new Cat("sally");
-	animal[2] = new Pig("buja");
-	}
+	static Animal[] animal= {new Dog("alpha"),new Cat("sally"),new Pig("buja")};
 
 	ObjectTest2(){}
-	static ObjectTest2 disp(int i) {
-		return animal[i+1];
+	static Animal disp(int i) {
+		return animal[i-1];
 	}
 }
 
