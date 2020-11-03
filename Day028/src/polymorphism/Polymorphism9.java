@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-class Animal {
+class Animal extends ObjectTest2{
 	String name;
 	public Animal() {}
 	public Animal(String name) {super();this.name=name;}
@@ -36,11 +36,14 @@ class Pig extends Animal{
 }
 
 class ObjectTest2 {
-	static Animal[] animal= {new Dog("alpha"),new Cat("sally"),new Pig("buja")};
-
-	ObjectTest2(){}
-	static Animal disp(int i) {
-		return animal[i-1];
+	static Object disp(int i){
+		Object result = new Object();
+		switch(i) {
+		case 1 : result = new Dog("alpha");break;
+		case 2 : result = new Cat("sally");break;
+		case 3 : result = new Pig("buja");break;
+		}
+		return result;
 	}
 }
 
