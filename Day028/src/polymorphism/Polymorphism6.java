@@ -1,6 +1,5 @@
 package polymorphism;
 
-
 class Mother{
 	int ma=10; int mb=20;;
 	public Mother() {super();}
