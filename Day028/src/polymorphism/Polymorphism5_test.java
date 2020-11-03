@@ -13,7 +13,7 @@ class TestSon extends TestPapa{
 	public void sing() {System.out.println("안녕-폴킴");}
 }
 	
-public class polymorphism5_test {
+public class Polymorphism5_test {
 	public static void main(String[] args) {
 		TestPapa papa = new TestSon();
 		// 1. papa가 쓸 수 있는 인스턴스 변수 : money
