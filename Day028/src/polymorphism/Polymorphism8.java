@@ -18,7 +18,7 @@ package polymorphism;
 	e. t = (Tank) u; 
 	f. GroundUnit gu2 = t; 
 	
-	정답 :  C, E /  하위 클래스에 상위 클래스로 인스턴스화 할 수 없음.
+	정답 : E /  하위 클래스에 상위 클래스로 인스턴스화 할 수 없음.
 */
 class Polymorphism8 {
 	public static void main(String[] args) {
