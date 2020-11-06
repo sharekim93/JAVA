@@ -7,7 +7,7 @@ class Process_v4 {
 	Process_v4(){super();}
 	void menu(Bank_v4[] bank) {
 		Scanner scanner = new Scanner(System.in);
-		
+
 		while(true){
 		int index = searchIndex(bank);
 		System.out.println("======BANK======\r"
