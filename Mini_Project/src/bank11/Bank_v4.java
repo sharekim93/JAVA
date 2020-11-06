@@ -14,7 +14,7 @@ class Bank_v4 {
 
 	@Override
 	public String toString() {
-		return "Bank_v4 [id=" + id + ", pass=" + pass + ", balance=" + balance + "]";
+		return "id=" + id + ", pass=" + pass + ", balance=" + balance;
 	}
 
 	public String getId() {
