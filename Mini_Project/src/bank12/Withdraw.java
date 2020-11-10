@@ -9,14 +9,19 @@ class Withdraw extends Userinfo implements Bank_Controller{
 		
 		int index = userIndex(bank,userinfo());
 		System.out.println("=====출금 계좌정보 입력=====");
-		if(index==-1) {System.out.println("계좌 정보가 없습니다.");return;}
-		else {
+		try{
+			if(index==-1) {throw new Exception("계좌 정보가 없습니다.");}
+			else {
 			System.out.print("출금액 : ");
-			
 			money=scanner.nextDouble();
-			if (bank.getBalance()-money>=0) {bank.setBalance(bank.getBalance()-money);}
-			else if (bank.getBalance()-money<0) {System.out.println("금액이 모자랍니다.");}
-			else if (money<0) {System.out.println("잘못 입력하셨습니다.");}
+
+			if (money<0) {throw new Exception("잘못 입력하셨습니다.");}
+			else if (bank.getBalance()-money>=0) {bank.setBalance(bank.getBalance()-money);}
+			else if (bank.getBalance()-money<0) {throw new Exception("금액이 모자랍니다");}
+
+			}
 		}
+		catch(Exception e) {System.out.println(e.getMessage());}
+
 	}
 }

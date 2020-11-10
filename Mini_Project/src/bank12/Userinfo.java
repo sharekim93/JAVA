@@ -26,13 +26,17 @@ class Userinfo extends Menu6 implements Bank_Controller{
 	}
 		
 	 boolean validate_id(String id) {
-		boolean space=false;
+		boolean result=true;
 		try {
-			for (int j=0; j<id.length();j++) {if(id.charAt(j)=='\s') {space=true;
-			new Exception("ID에 빈칸이 입력 되었습니다.");break;}}
+			for (int j=0; j<id.length();j++) {
+				if(id.charAt(j)=='\s') {
+				result=false;
+				throw new Exception("ID에 빈칸이 입력 되었습니다.");
+				}
+			}
 		}
-		catch (Exception e) {e.toString();}
-		finally {return space;}
+		catch (Exception e) {System.out.println(e.getMessage());}
+		return result;
 }
 	
 	 boolean validate_pass(String pass) {
@@ -41,19 +45,17 @@ class Userinfo extends Menu6 implements Bank_Controller{
 		boolean result=false;
 		
 		try {
-		for (int j=0; j<pass.length();j++) {
-			if(pass.charAt(j)=='\s') {new Exception("비밀번호에 빈칸이 입력되었습니다.");break;}
+			for (int j=0; j<pass.length();j++) {
+				if(pass.charAt(j)=='\s') {throw new Exception("비밀번호에 빈칸이 입력되었습니다.");}
+			}
+			System.out.println("비밀번호를 한 번 더 입력하세요 > ");
+			temp_pass = scanner.nextLine();
+	
+			if(pass.equals(temp_pass)) result=true;
+			else {throw new Exception("비밀번호가 일치하지 않습니다.");}
 		}
-		System.out.println("비밀번호를 한 번 더 입력하세요 > ");
-		temp_pass = scanner.nextLine();
-		try {
-		if(pass.equals(temp_pass)) result=true;
-		else {new Exception("비밀번호가 일치하지 않습니다.");}
-		}
-		catch(Exception ee) {ee.toString();}
-		}
-		catch (Exception e) {e.toString();}
-		finally {return result;}
+		catch (Exception e) {System.out.println(e.getMessage());}
+		return result;
 		
 
 	}
@@ -62,9 +64,9 @@ class Userinfo extends Menu6 implements Bank_Controller{
 		boolean result=false;
 		try {
 		if(bal>0) {result=true;}
-		else {new Exception("입력 금액을 확인해주세요");}
+		else {throw new Exception("입력 금액을 확인해주세요");}
 		}
-		catch(Exception e) {e.toString();}
-		finally {return result;}
+		catch(Exception e) {System.out.println(e.getMessage());}
+		return result;
 	}
 }
