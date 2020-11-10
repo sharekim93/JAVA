@@ -41,12 +41,9 @@ class GUI implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource().equals(btn[0])) {JOptionPane.showMessageDialog(null,this.btn[0].getText());}
-		else if(e.getSource().equals(btn[1])) {JOptionPane.showMessageDialog(null,this.btn[1].getText());}
-		else if(e.getSource().equals(btn[2])) {JOptionPane.showMessageDialog(null,this.btn[2].getText());}
-		else if(e.getSource().equals(btn[3])) {JOptionPane.showMessageDialog(null,this.btn[3].getText());}
-		else if(e.getSource().equals(btn[4])) {JOptionPane.showMessageDialog(null,this.btn[4].getText());}
-		
+		for(int i=0;i<btn.length;i++) {
+			if(e.getSource().equals(btn[i])) {JOptionPane.showMessageDialog(null,this.btn[i].getText());}
+		}		
 	}
 	
 }
