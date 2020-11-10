@@ -2,7 +2,7 @@ package bank12;
 
 import java.util.Scanner;
 
-class Userinfo extends Menu6 implements Bank_Controller{
+class Userinfo extends Menu6 {
 	public String[] userinfo() {
 		String temp[]=new String[2];
 		Scanner scanner = new Scanner(System.in);
