@@ -27,9 +27,9 @@ class Gui4 implements ActionListener{
 
 	frame.setLayout(new GridLayout(1,3));
 
-	label = new JLabel("주문할 우유 이름을 적으시오.");
+	label = new JLabel("주문할 우유 이름을 적으시오.",JLabel.CENTER); //가운데 정렬
 	label.setFont(new Font(Font.DIALOG,Font.BOLD,18));
-	label.setHorizontalAlignment(SwingConstants.CENTER);
+	//label.setHorizontalAlignment(SwingConstants.CENTER); //가운데 정렬 2
 
 
 	frame.add(label);
