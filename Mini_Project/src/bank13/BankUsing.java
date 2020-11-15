@@ -14,8 +14,9 @@ public class BankUsing extends BankUtil{
 		System.out.println(model.toString());
 		int num = scanner.nextInt();
 			switch(num) {
-			case 1:checkCapacity(model);
-				   con[1].exec();break;
+			case 1:int index = checkCapacity(model);
+				   if(index!=-1) {con[1].exec();break;}
+				   else {break;}
 			case 2:con[2].exec();break;
 			case 3:con[3].exec();break;
 			case 4:con[4].exec();break;
@@ -24,5 +25,4 @@ public class BankUsing extends BankUtil{
 			}
 		}
 	}
-
 }

@@ -5,12 +5,12 @@ import java.util.Scanner;
 
 public class BankUtil {
 	Scanner scanner = new Scanner(System.in);
-	ArrayList<Model> model = new ArrayList<Model>(3);
-
+	static ArrayList<Model> model = new ArrayList<Model>();
+	
 	public String[] userinfo() {
 		String temp[]=new String[2];
 		System.out.print("*ID :");
-		temp[0] = scanner.nextLine();
+		temp[0] = scanner.nextLine();		
 		System.out.print("*PASS :");
 		temp[1] = scanner.nextLine();
 		return temp;
@@ -71,10 +71,12 @@ public class BankUtil {
 		return result;
 	}
 	
-	public void checkCapacity(ArrayList<Model> model) {
-			try{
-				if(model.size()>=3) {throw new Exception("더 이상 계좌를 추가할 수 없습니다.");}
-			}
-			catch(Exception e){System.out.println(e.getMessage());}
+	public int checkCapacity(ArrayList<Model> model) {
+		int i=1;
+		try{
+			if(model.size()>=3) {throw new Exception("더 이상 계좌를 추가할 수 없습니다.");}
+		}
+		catch(Exception e){System.out.println(e.getMessage());i=-1;}
+		return i;
 	}
 }

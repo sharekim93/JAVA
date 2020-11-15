@@ -11,7 +11,6 @@ public class Input extends BankUsing implements Bank_Controller {
 		if(!super.validate_pass(temp[1])) {return;}
 		temp_bal = super.inputBal();
 		if(!super.validate_bal(temp_bal)) {return;}
-		
 		model.add(new Model(temp[0],temp[1],temp_bal));
 	}	
 }
