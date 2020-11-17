@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,10 +19,12 @@ class Checkbox implements ActionListener {
 	JPanel[] panel;
 	JCheckBox[] chkbox;
 	JRadioButton[] rbtn;
+	ButtonGroup group;
 	
 	Checkbox(){
 		super();
 		frame	= new JFrame();
+		group	= new ButtonGroup();
 		label	= new JLabel[] {new JLabel("CHECKBOX"),new JLabel("RADIO")};
 		panel	= new JPanel[] {new JPanel(new GridLayout(3,1)),new JPanel(new GridLayout(2,1))};
 		chkbox	= new JCheckBox[]{new JCheckBox("JAVA",false),new JCheckBox("JSP",false),new JCheckBox("SPRING",false)};
@@ -40,6 +43,8 @@ class Checkbox implements ActionListener {
 		frame.add(panel[0]);panel[0].add(chkbox[0]);panel[0].add(chkbox[1]);panel[0].add(chkbox[2]);
 		frame.add(label[1]);
 		frame.add(panel[1]);panel[1].add(rbtn[0]);	panel[1].add(rbtn[1]);
+		group.add(rbtn[0]);
+		group.add(rbtn[1]);
 		
 		frame.setSize(600, 400);
 		frame.setVisible(true);
@@ -48,8 +53,9 @@ class Checkbox implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		
-		
+		if(arg0.getSource().equals(chkbox[0])) {JOptionPane.showMessageDialog(null, chkbox[0].getText());}
+		else if(arg0.getSource().equals(chkbox[1])) {JOptionPane.showMessageDialog(null, chkbox[1].getText());}
+		else if(arg0.getSource().equals(chkbox[2])) {JOptionPane.showMessageDialog(null, chkbox[2].getText());}
 	}
 }
 
