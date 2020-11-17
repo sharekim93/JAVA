@@ -1,8 +1,11 @@
 package bank13;
 
+import java.util.Scanner;
+
 public class Deposit extends BankUsing implements Bank_Controller {
 	Deposit(){super();}
 	public void exec () {
+		Scanner scanner = new Scanner(System.in);
 		double money=0;
 		
 		int index = userIndex(userinfo());

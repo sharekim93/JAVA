@@ -16,7 +16,7 @@ class Button{
 	JPanel panel[];
 	JLabel label[];
 	JButton button;
-	int n=1;
+	static int n=0;
 	
 	Button(){
 		frame = new JFrame();
@@ -27,13 +27,10 @@ class Button{
 		frame.setLayout(new BorderLayout());
 		
 		panel = new JPanel[3];
-		label = new JLabel[]{
-				new JLabel("PANEL1",JLabel.CENTER),
-				new JLabel("PANEL2",JLabel.CENTER),
-				new JLabel("PANEL3",JLabel.CENTER)
-				};
+		label = new JLabel[3];
 		for(int i=0;i<panel.length;i++) {
-			panel[i]=new JPanel();
+			panel[i]	=	new JPanel();
+			label[i]	=	new JLabel("PANEL"+(i+1),JLabel.CENTER);
 			panel[i].add(label[i]);
 		}
 		
@@ -44,17 +41,16 @@ class Button{
 		button.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				int i=1;
-				frame.add(panel[i++],BorderLayout.CENTER);
-				frame.add(button,BorderLayout.SOUTH);
-				if(i==4) {i=0;}
+			public void actionPerformed(ActionEvent e) {		
+				n++;
+				if(n==3   ) {n=0;}
+				
 			}
 			
 		});
-		
-		frame.add(panel[0],BorderLayout.CENTER);
+		frame.add(panel[n],BorderLayout.CENTER);
 		frame.add(button,BorderLayout.SOUTH);
+
 		
 		frame.setVisible(true);
 	}

@@ -1,8 +1,11 @@
 package bank13;
 
+import java.util.Scanner;
+
 public class Delete extends BankUsing implements Bank_Controller{
 	Delete(){super();}
 	public void exec() {
+		Scanner scanner = new Scanner(System.in);
 		int index = userIndex(userinfo());
 		try {
 		if(index==-1) {throw new Exception("계좌 정보가 없습니다.");}

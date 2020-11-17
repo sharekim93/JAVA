@@ -1,9 +1,12 @@
 package bank13;
 
+import java.util.Scanner;
+
 public class Withdraw extends BankUsing implements Bank_Controller{
 	Withdraw(){super();}
 	public void exec() {
 		double money=0;
+		Scanner scanner = new Scanner(System.in);
 		
 		int index = userIndex(userinfo());
 		System.out.println("=====출금 계좌정보 입력=====");

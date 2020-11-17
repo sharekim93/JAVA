@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BankUtil {
-	Scanner scanner = new Scanner(System.in);
+	
 	static ArrayList<Model> model = new ArrayList<Model>();
 	
 	public String[] userinfo() {
+		Scanner scanner = new Scanner(System.in);
 		String temp[]=new String[2];
 		System.out.print("*ID :");
 		temp[0] = scanner.nextLine();		
@@ -17,6 +18,7 @@ public class BankUtil {
 	}
 	
 	public double inputBal() {
+		Scanner scanner = new Scanner(System.in);
 		System.out.print("*BALANCE :");
 		return scanner.nextDouble();
 	}
@@ -24,7 +26,7 @@ public class BankUtil {
 	public int userIndex(String[] temp) {
 		int index=-1;
 		for(int i=0;i<model.size();i++) {
-		if((temp[0].equals(model.get(i).getId())) && (temp[1].equals(model.get(i).getPass()))){index=i;}
+		if((temp[0].equals(model.get(i).getId())) && (temp[1].equals(model.get(i).getPass()))){index=i;break;}
 		}
 		return index;
 	}
@@ -34,16 +36,20 @@ public class BankUtil {
 		try {
 			for (int j=0; j<id.length();j++) {
 				if(id.charAt(j)=='\s') {
-				result=false;
 				throw new Exception("ID에 빈칸이 입력 되었습니다.");
 				}
 			}
+			for(int i=0;i<model.size();i++) {
+				if(id.equals(model.get(i).getId())) {throw new Exception("이미 존재하는 ID입니다.");}
+			}
+			
 		}
-		catch (Exception e) {System.out.println(e.getMessage());}
+		catch (Exception e) {System.out.println(e.getMessage());result=false;}
 		return result;
 }
 	
 	public boolean validate_pass(String pass) {
+		Scanner scanner = new Scanner(System.in);
 		String temp_pass =null;
 		boolean result=false;
 		
