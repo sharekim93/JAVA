@@ -27,7 +27,6 @@ class SocketServer{
 		writer	= new DataOutputStream(socket.getOutputStream());			
 		reader	= new DataInputStream(socket.getInputStream());
 		
-		
 		writer.writeUTF("[SERVER] 안녕하세요 고객님");
 		System.out.println("6.상담사 연결확인 메시지 보내기");
 
